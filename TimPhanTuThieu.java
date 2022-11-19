@@ -13,7 +13,8 @@ public class TimPhanTuThieu {
 
 
         int n = 20;
-        int A[] = {1,2,3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        int A[] = {1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+
 
         //Cách 1:
         int a = n * (n + 1) / 2;
@@ -24,21 +25,17 @@ public class TimPhanTuThieu {
 
         System.out.println("Số còn thiếu là :" + (a - sum));
 
-        //Cách 2:
+
+        //Cách 2: Tìm dựa vào chỉ số trong mảng
+        // A[0]=1; A[1] =2;
+        //Thiếu 4 -> A[3] =5
         int socantim = 0;
-        for (int i = 0; i < A.length-1; i++) {
-            sum = A[i]+A[A.length-i-1];
-
-            if(sum > 21){
-                socantim = sum-A[i]-1;
+        int n1 = A.length - 1;
+        for (int i = 0; i < n1; i++) {
+            if (A[i] - i == 2) {
+                socantim = i + 1;
+                break;
             }
-            if(sum < 21){
-                socantim = sum-A[A.length-i-1]+1;
-            }
-            if(sum == 21){
-                socantim = n/2;
-            }
-
         }
 
         System.out.println("Số còn thiếu là :" + socantim);
